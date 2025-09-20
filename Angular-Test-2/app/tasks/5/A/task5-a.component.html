@@ -1,0 +1,18 @@
+<h3>Fájlok listája:</h3>
+<div cdkDropList [cdkDropListData]="yamlFiles" (cdkDropListDropped)="drop($event)" class="list-container">
+    <div *ngFor="let file of yamlFiles" cdkDrag class="list-item">
+        {{ file }}
+    </div>
+</div>
+
+<hr>
+
+<h3>Fájl tartalmak:</h3>
+<pre><strong>config-default.yaml:</strong> {{ file1Content | json }}</pre>
+<pre><strong>config-course.yaml:</strong> {{ file2Content | json }}</pre>
+<pre><strong>config-user.yaml:</strong> {{ file3Content | json }}</pre>
+
+<hr>
+
+<h3>Összefűtzött YAML Object:</h3>
+<pre>{{ mergedObject | json }}</pre>

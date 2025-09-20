@@ -1,0 +1,36 @@
+<div>
+    <label>
+        Sorok száma:
+        <input type="number" [(ngModel)]="rows" (change)="updateGridSize(rows, cols)" min="3" />
+    </label>
+    <label>
+        Oszlopok száma:
+        <input type="number" [(ngModel)]="cols" (change)="updateGridSize(rows, cols)" min="3" />
+    </label>
+</div>
+
+<div class="message" *ngIf="message">
+    {{ message }}
+</div>
+
+<div class="row" *ngFor="let row of labyrinthGrid; let rowIndex = index">
+    <div
+            class="cell"
+            *ngFor="let cell of row; let colIndex = index"
+            [ngClass]="{ fixed: cell === 'fixed' }"
+            (click)="onCellClick(rowIndex, colIndex)"
+    >
+
+        <img
+                *ngIf="cell === 'fixed' && rowIndex === rows - 1 && colIndex === 0"
+                src="/assets/images/tasks/1/A/labyrinth/entrance.jpg"
+        />
+
+        <img
+                *ngIf="cell === 'fixed' && rowIndex === 0 && colIndex === cols - 1"
+                src="/assets/images/tasks/1/A/labyrinth/exit.jpg"
+        />
+
+        <img *ngIf="cell && cell !== 'fixed'" [src]="'/assets/images/tasks/1/A/labyrinth/' + cell" />
+    </div>
+</div>

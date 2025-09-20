@@ -1,0 +1,57 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label for="cpu">Processzor típusa</label>
+    <nz-select formControlName="cpu" id="cpu" style="width: 100%;">
+        <nz-option
+                *ngFor="let cpu of CPUs"
+                [nzValue]="cpu"
+                [nzLabel]="cpu.name + ' (' + cpu.score + ' CPU score)'">
+        </nz-option>
+    </nz-select>
+    <div *ngIf="form.get('cpu')?.errors?.['scoreInvalid']" class="error">
+        A CPU-nak legalább 14500-as pontszámra van szüksége.
+    </div>
+
+
+    <label for="gpu">GPU típusa</label>
+    <nz-select formControlName="gpu" id="gpu" style="width: 100%;">
+        <nz-option
+                *ngFor="let gpu of GPUs"
+                [nzValue]="gpu"
+                [nzLabel]="gpu.name + ' (' + gpu.vramGB + ' GB VRAM)'">
+        </nz-option>
+    </nz-select>
+    <div *ngIf="form.get('gpu')?.errors?.['vramInvalid']" class="error">
+        A GPU-nak legalább 8GB VRAM-mal kell rendelkeznie.
+    </div>
+
+
+    <label>
+        <label nz-checkbox formControlName="rayTracing">RayTracing támogatás</label>
+    </label>
+    <div *ngIf="form.get('rayTracing')?.errors?.['required']" class="error">
+        A RayTracing támogatás kötelező.
+    </div>
+
+
+    <label for="ram">Memória</label>
+    <nz-input-number formControlName="ram" id="ram" [nzMin]="0" [nzPrecision]="0" style="width: 100%;"></nz-input-number>
+    <div *ngIf="form.get('ram')?.errors?.['min']" class="error">
+        A memória legalább 16GB kell, hogy legyen.
+    </div>
+
+
+    <label for="storage">Elérhető tárhely</label>
+    <nz-input-number formControlName="storage" id="storage" [nzMin]="0" [nzPrecision]="0" style="width: 100%;"></nz-input-number>
+    <div *ngIf="form.get('storage')?.errors?.['min']" class="error">
+        Az elérhető tárhely legalább 100GB kell, hogy legyen.
+    </div>
+
+
+    <div *ngIf="form.errors?.['invalidGpuConfig']" class="error">
+        A megadott paraméterekkel rendelkező GPU nem létezik!
+    </div>
+
+
+    <button nz-button nzType="primary" type="submit">Ellenőrzés</button>
+</form>

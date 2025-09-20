@@ -1,0 +1,39 @@
+
+<button nz-button nzType="primary" (click)="showModal()">Kép kiválasztása</button>
+
+
+<div *ngIf="savedImage" class="image-preview">
+    <img [src]="savedImage" alt="Mentett kép" width="300">
+    <button nz-button (click)="deleteImage()">Törlés</button>
+</div>
+
+
+<nz-modal
+        [(nzVisible)]="isModalVisible"
+        nzTitle="Kép kivágása"
+        (nzOnCancel)="handleCancel()"
+        [nzFooter]="null"
+>
+    <div>
+
+        <input type="file" (change)="fileChangeEvent($event)" accept="image/*">
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+
+        <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="16 / 9"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="onImageLoaded()"
+                (loadImageFailed)="onLoadImageFailed()"
+        ></image-cropper>
+
+
+        <div class="modal-footer">
+            <button nz-button nzType="default" (click)="handleCancel()">Bezárás</button>
+            <button nz-button nzType="primary" [disabled]="!croppedImage" (click)="saveCroppedImage()">Mentés</button>
+        </div>
+    </div>
+</nz-modal>

@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <label for="title">Titulus:</label>
+    <input id="title" formControlName="title" type="text" />
+
+    <label for="firstName">Keresztnév:</label>
+    <input id="firstName" formControlName="firstName" type="text" />
+    <div *ngIf="form.get('firstName')?.invalid && form.get('firstName')?.touched" class="error">
+        Keresztnév kötelező és legalább 3 karakter hosszúnak kell lennie a névnek!
+    </div>
+
+    <label for="middleName">Középső név:</label>
+    <input id="middleName" formControlName="middleName" type="text" />
+
+
+    <label for="lastName">Vezetéknév:</label>
+    <input id="lastName" formControlName="lastName" type="text" />
+    <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched" class="error">
+        Vezetéknév kötelező és legalább 3 karakter hosszúnak kell lennie a névnek!
+    </div>
+
+    <button type="submit">Elküld</button>
+</form>
+
+
+<h3 *ngIf="submittedData">Formázott nevek:</h3>
+<p *ngIf="submittedData">Formázott név (HU): {{ submittedData | nameFormatter:'hu' }}</p>
+<p *ngIf="submittedData">Formázott név (EN): {{ submittedData | nameFormatter:'en' }}</p>

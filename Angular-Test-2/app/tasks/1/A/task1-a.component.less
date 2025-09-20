@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  &.fixed {
+    background: #f4f4f4;
+    cursor: not-allowed;
+  }
+}
+
+.message {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: green;
+}

@@ -1,0 +1,64 @@
+
+<div style="margin-bottom: 2em;">
+    <h3>Kördiagram</h3>
+    <ngx-charts-pie-chart
+            [view]="view"
+            [scheme]="'vivid'"
+            [results]="pieChartData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+    >
+    </ngx-charts-pie-chart>
+
+    <h3>Kördiagram2</h3>
+    <ngx-charts-pie-chart
+            [view]="view"
+            [scheme]="'vivid'"
+            [results]="pieChartData2"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+    >
+    </ngx-charts-pie-chart>
+</div>
+
+
+<div style="margin-bottom: 2em;">
+    <h3>Oszlopdiagram</h3>
+    <ngx-charts-bar-vertical
+            [view]="columnChartView"
+            [scheme]="'cool'"
+            [results]="columnChartData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+    >
+    </ngx-charts-bar-vertical>
+</div>
+
+<div>
+    <h3>Timeline Diagram</h3>
+    <ngx-charts-line-chart
+            [view]="timelineChartView"
+            [scheme]="'natural'"
+            [results]="timelineChartData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [showXAxisLabel]="showXAxisLabel"
+            [xAxisLabel]="'Hét'"
+            [showYAxisLabel]="showYAxisLabel"
+            [yAxisLabel]="'Érdeklődés szintje'"
+            [autoScale]="true"
+    >
+    </ngx-charts-line-chart>
+</div>
