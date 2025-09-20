@@ -1,0 +1,5 @@
+title: "Beadandó Végső Konfiguráció"
+theme: "dark"
+language: "en"
+enableChartExport: true
+maxUploadSizeMB: 10
