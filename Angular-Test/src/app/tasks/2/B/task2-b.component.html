@@ -1,0 +1,31 @@
+<div style="margin-bottom: 1em;">
+    <button (click)="ujGeneralas()" [disabled]="loading || !stats.length">+1000 véletlen szám hozzáadása</button>
+</div>
+
+<div *ngIf="loading" style="text-align:center; margin:2em 0;">
+    <span class="spinner"></span>
+    <div>Statisztika számítása folyamatban...</div>
+</div>
+
+<table *ngIf="!loading && stats.length" border="1" cellpadding="6" style="margin:auto;">
+    <thead>
+        <tr>
+            <th>Elemek száma</th>
+            <th>Minimum</th>
+            <th>Maximum</th>
+            <th>Átlag</th>
+            <th>Medián</th>
+            <th>Szórás</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stat of stats">
+            <td>{{stat.count}} db</td>
+            <td>{{stat.min | number:'1.2-2'}}</td>
+            <td>{{stat.max | number:'1.2-2'}}</td>
+            <td>{{stat.avg | number:'1.2-2'}}</td>
+            <td>{{stat.median | number:'1.2-2'}}</td>
+            <td>{{stat.std | number:'1.2-2'}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+<div style="margin-bottom: 1em;">
+  <canvas #carCanvas width="1200" height="400" style="border:1px solid #333;"></canvas>
+</div>
+<div *ngIf="errorMessage" style="color: red; font-weight: bold; margin-bottom: 1em;">
+  {{ errorMessage }}
+</div>
+<button (click)="jatekInditas()" [disabled]="gameStarted" style="margin-bottom: 1em;">
+  Játék indítása
+</button>
+<div *ngIf="hoveredCar" class="car-info">
+  <strong>Autó #{{hoveredCarIndex + 1}}</strong><br>
+  Szín: {{hoveredCar.color}}<br>
+  Test életereje: {{hoveredCar.bodyHealth}}<br>
+  Kerekek életereje: {{hoveredCar.wheelHealth}}<br>
+  Gyorsulás: {{hoveredCar.acceleration}} px/s²<br>
+  Max sebesség: {{hoveredCar.maxSpeed}} px/s
+</div>
